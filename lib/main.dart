@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Animated(
                     value: scaled ? 1 : 0.5,
-                    curve: Curves.easeInOut,
+                    curve: Curves.bounceInOut,
                     duration: Duration(milliseconds: 300),
                     builder: (context, child, animation) => Transform.scale(
                       scale: animation.value,
@@ -98,8 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),Animated(
                     value: scaled ? 0.5 : 1,
-                    curve: Curves.easeInOut,
-                    duration: Duration(milliseconds: 300),
+                    curve: Curves.bounceInOut,
+                    duration: Duration(milliseconds: 1000),
                     builder: (context, child, animation) => Transform.scale(
                       scale: animation.value,
                       child: child,
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
                       height: MediaQuery.of(context).size.width * 0.5,
-                      color: Colors.blue,
+                      color: Colors.green,
                     ),
                   ),
                 ],
