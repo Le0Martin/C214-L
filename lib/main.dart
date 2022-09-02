@@ -74,27 +74,45 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body: GestureDetector(
-        onTap: () {
-          setState(() {
-            scaled = !scaled;
-          });
-        },
-        child: Center(
-          child: Animated(
-            value: scaled ? 1 : 0.5,
-            curve: Curves.easeInOut,
-            duration: Duration(milliseconds: 300),
-            builder: (context, child, animation) => Transform.scale(
-              scale: animation.value,
-              child: child,
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.width * 0.5,
-              color: Colors.red,
-            ),
-          ),
-        )
+          onTap: () {
+            setState(() {
+              scaled = !scaled;
+            });
+          },
+          child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Animated(
+                    value: scaled ? 1 : 0.5,
+                    curve: Curves.easeInOut,
+                    duration: Duration(milliseconds: 300),
+                    builder: (context, child, animation) => Transform.scale(
+                      scale: animation.value,
+                      child: child,
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.width * 0.5,
+                      color: Colors.red,
+                    ),
+                  ),Animated(
+                    value: scaled ? 0.5 : 1,
+                    curve: Curves.easeInOut,
+                    duration: Duration(milliseconds: 300),
+                    builder: (context, child, animation) => Transform.scale(
+                      scale: animation.value,
+                      child: child,
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.width * 0.5,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              )
+          )
       ),
     );
   }
